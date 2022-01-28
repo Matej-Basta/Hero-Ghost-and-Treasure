@@ -86,14 +86,17 @@ const announcingDefeat = () => {
   }
 };
 
+//movement of the ghost every half 200ms
 setInterval(() => {
+  //randomly choosing whether it will try to approach on horizontal or vertical level
   let numberSettingDirection = Math.floor(Math.random() * 2) + 1;
+  //condition that prevents the ghost from standing on one place when he and hero have same row or column
   if (ghostHorizontal === heroHorizontal) {
     numberSettingDirection = 2;
   } else if (ghostVertical === heroVertical) {
     numberSettingDirection = 1;
   }
-
+  //approaching either horizontally (case 1) or vertically (case 2)
   switch (numberSettingDirection) {
     case 1:
       if (ghostHorizontal > heroHorizontal) {
