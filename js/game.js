@@ -15,6 +15,8 @@ const background = document.querySelector(".map");
 //variables used to add and subtract from the position
 let heroHorizontal = 100;
 let heroVertical = 500;
+let ghostHorizontal = 600;
+let ghostVertical = 200;
 //hero moving right
 document.addEventListener("keyup", (event) => {
   if (
@@ -83,3 +85,46 @@ const announcingDefeat = () => {
     background.innerHTML = "<p class='message'>You lost!</p>";
   }
 };
+
+//ghost movement every second in a random direction
+setInterval(() => {
+  const numberSettingDirection = Math.floor(Math.random() * 4) + 1;
+  switch (numberSettingDirection) {
+    case 1:
+      if (ghostVertical !== 0) {
+        ghostVertical -= 100;
+      } else {
+        ghostVertical += 100;
+      }
+      ghost.style.top = ghostVertical + "px";
+      announcingDefeat();
+      break;
+    case 2:
+      if (ghostHorizontal !== 700) {
+        ghostHorizontal += 100;
+      } else {
+        ghostHorizontal -= 100;
+      }
+      ghost.style.left = ghostHorizontal + "px";
+      announcingDefeat();
+      break;
+    case 3:
+      if (ghostVertical !== 500) {
+        ghostVertical += 100;
+      } else {
+        ghostVertical -= 100;
+      }
+      ghost.style.top = ghostVertical + "px";
+      announcingDefeat();
+      break;
+    case 4:
+      if (ghostHorizontal !== 0) {
+        ghostHorizontal -= 100;
+      } else {
+        ghostHorizontal += 100;
+      }
+      ghost.style.left = ghostHorizontal + "px";
+      announcingDefeat();
+      break;
+  }
+}, 500);
