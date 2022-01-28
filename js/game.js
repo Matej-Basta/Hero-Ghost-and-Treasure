@@ -24,6 +24,7 @@ document.addEventListener("keyup", (event) => {
     heroHorizontal += 100;
     hero.style.left = heroHorizontal + "px";
     announcingVictory();
+    announcingDefeat();
   }
 });
 //hero moving left
@@ -35,6 +36,7 @@ document.addEventListener("keyup", (event) => {
     heroHorizontal -= 100;
     hero.style.left = heroHorizontal + "px";
     announcingVictory();
+    announcingDefeat();
   }
 });
 //hero moving up
@@ -46,6 +48,7 @@ document.addEventListener("keyup", (event) => {
     heroVertical -= 100;
     hero.style.top = heroVertical + "px";
     announcingVictory();
+    announcingDefeat();
   }
 });
 //hero moving down
@@ -57,6 +60,7 @@ document.addEventListener("keyup", (event) => {
     heroVertical += 100;
     hero.style.top = heroVertical + "px";
     announcingVictory();
+    announcingDefeat();
   }
 });
 
@@ -66,6 +70,16 @@ const announcingVictory = () => {
     hero.style.top === treasure.style.top &&
     hero.style.left === treasure.style.left
   ) {
-    background.innerHTML = "<p class='winning'>You won!</p>";
+    background.innerHTML = "<p class='message'>You won!</p>";
+  }
+};
+
+//function that announces defeat
+const announcingDefeat = () => {
+  if (
+    hero.style.top === ghost.style.top &&
+    hero.style.left === ghost.style.left
+  ) {
+    background.innerHTML = "<p class='message'>You lost!</p>";
   }
 };

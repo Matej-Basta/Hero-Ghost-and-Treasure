@@ -42,7 +42,7 @@ body {
   background-image: url("../img/treasure.png");
   z-index: 1;
 }
-.winning {
+.message {
   font-size: 5rem;
   color: white;
   font-weight: bold;
