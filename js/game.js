@@ -86,45 +86,76 @@ const announcingDefeat = () => {
   }
 };
 
-//ghost movement every second in a random direction
 setInterval(() => {
-  const numberSettingDirection = Math.floor(Math.random() * 4) + 1;
+  let numberSettingDirection = Math.floor(Math.random() * 2) + 1;
+  if (ghostHorizontal === heroHorizontal) {
+    numberSettingDirection = 2;
+  } else if (ghostVertical === heroVertical) {
+    numberSettingDirection = 1;
+  }
+
   switch (numberSettingDirection) {
     case 1:
-      if (ghostVertical !== 0) {
-        ghostVertical -= 100;
-      } else {
-        ghostVertical += 100;
+      if (ghostHorizontal > heroHorizontal) {
+        ghostHorizontal -= 100;
+      } else if (ghostHorizontal < heroHorizontal) {
+        ghostHorizontal += 100;
       }
-      ghost.style.top = ghostVertical + "px";
+      ghost.style.left = ghostHorizontal + "px";
       announcingDefeat();
       break;
+
     case 2:
-      if (ghostHorizontal !== 700) {
-        ghostHorizontal += 100;
-      } else {
-        ghostHorizontal -= 100;
-      }
-      ghost.style.left = ghostHorizontal + "px";
-      announcingDefeat();
-      break;
-    case 3:
-      if (ghostVertical !== 500) {
-        ghostVertical += 100;
-      } else {
+      if (ghostVertical > heroVertical) {
         ghostVertical -= 100;
+      } else if (ghostVertical < heroVertical) {
+        ghostVertical += 100;
       }
       ghost.style.top = ghostVertical + "px";
-      announcingDefeat();
-      break;
-    case 4:
-      if (ghostHorizontal !== 0) {
-        ghostHorizontal -= 100;
-      } else {
-        ghostHorizontal += 100;
-      }
-      ghost.style.left = ghostHorizontal + "px";
       announcingDefeat();
       break;
   }
-}, 500);
+}, 200);
+
+//ghost movement every second in a random
+// setInterval(() => {
+//   const numberSettingDirection = Math.floor(Math.random() * 4) + 1;
+//   switch (numberSettingDirection) {
+//     case 1:
+//       if (ghostVertical !== 0) {
+//         ghostVertical -= 100;
+//       } else {
+//         ghostVertical += 100;
+//       }
+//       ghost.style.top = ghostVertical + "px";
+//       announcingDefeat();
+//       break;
+//     case 2:
+//       if (ghostHorizontal !== 700) {
+//         ghostHorizontal += 100;
+//       } else {
+//         ghostHorizontal -= 100;
+//       }
+//       ghost.style.left = ghostHorizontal + "px";
+//       announcingDefeat();
+//       break;
+//     case 3:
+//       if (ghostVertical !== 500) {
+//         ghostVertical += 100;
+//       } else {
+//         ghostVertical -= 100;
+//       }
+//       ghost.style.top = ghostVertical + "px";
+//       announcingDefeat();
+//       break;
+//     case 4:
+//       if (ghostHorizontal !== 0) {
+//         ghostHorizontal -= 100;
+//       } else {
+//         ghostHorizontal += 100;
+//       }
+//       ghost.style.left = ghostHorizontal + "px";
+//       announcingDefeat();
+//       break;
+//   }
+// }, 500);
