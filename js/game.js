@@ -10,6 +10,8 @@ const treasure = document.querySelector(".treasure");
 treasure.style.top = "0px";
 treasure.style.left = "400px";
 
+const background = document.querySelector(".map");
+
 //variables used to add and subtract from the position
 let heroHorizontal = 100;
 let heroVertical = 500;
@@ -21,6 +23,7 @@ document.addEventListener("keyup", (event) => {
   ) {
     heroHorizontal += 100;
     hero.style.left = heroHorizontal + "px";
+    announcingVictory();
   }
 });
 //hero moving left
@@ -31,6 +34,7 @@ document.addEventListener("keyup", (event) => {
   ) {
     heroHorizontal -= 100;
     hero.style.left = heroHorizontal + "px";
+    announcingVictory();
   }
 });
 //hero moving up
@@ -41,6 +45,7 @@ document.addEventListener("keyup", (event) => {
   ) {
     heroVertical -= 100;
     hero.style.top = heroVertical + "px";
+    announcingVictory();
   }
 });
 //hero moving down
@@ -51,7 +56,16 @@ document.addEventListener("keyup", (event) => {
   ) {
     heroVertical += 100;
     hero.style.top = heroVertical + "px";
+    announcingVictory();
   }
 });
 
-const announcingWictory = () => {};
+//function that announces victory
+const announcingVictory = () => {
+  if (
+    hero.style.top === treasure.style.top &&
+    hero.style.left === treasure.style.left
+  ) {
+    background.innerHTML = "<p class='winning'>You won!</p>";
+  }
+};

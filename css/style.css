@@ -30,12 +30,25 @@ body {
 
 .hero {
   background-image: url("../img/hero.png");
+  z-index: 2;
 }
 
 .ghost {
   background-image: url("../img/ghost.png");
+  z-index: 3;
 }
 
 .treasure {
   background-image: url("../img/treasure.png");
+  z-index: 1;
+}
+.winning {
+  font-size: 5rem;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  position: absolute;
+  top: 170px;
+  left: 200px;
 }
